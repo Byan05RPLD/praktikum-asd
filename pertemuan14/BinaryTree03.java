@@ -11,6 +11,23 @@ public class BinaryTree03 {
         return root == null;
     }
 
+    public void tampilMahasiswaIPKdiAtas(double ipkBatas) {
+        tampilMahasiswaIPKdiAtasHelper(root, ipkBatas);
+    }
+
+    public void tampilMahasiswaIPKdiAtasHelper(Node03 node, double ipkBatas) {
+        if (node == null)
+            return;
+
+        tampilMahasiswaIPKdiAtasHelper(node.left, ipkBatas);
+
+        if (node.mahasiswa.ipk > ipkBatas) {
+            node.mahasiswa.tampilInformasi();
+        }
+
+        tampilMahasiswaIPKdiAtasHelper(node.right, ipkBatas);
+    }
+
     public Mahasiswa03 cariMinIPK() {
         if (root == null) {
             return null;
